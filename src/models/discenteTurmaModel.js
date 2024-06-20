@@ -1,6 +1,6 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
-import Turma from './turma.js';
+import Turma from './turmaModel.js';
 import Usuario from './usuarioModel.js';
 
 const DiscenteTurma = sequelize.define('DiscenteTurma', {
@@ -12,7 +12,7 @@ const DiscenteTurma = sequelize.define('DiscenteTurma', {
       key: 'id'
     }
   },
-  aluno_id: {
+  discente_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {

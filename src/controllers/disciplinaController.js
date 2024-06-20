@@ -1,4 +1,4 @@
-import Disciplina from '../models/disciplina.js';
+import Disciplina from '../models/disciplinaModel.js';
 
 // Create a new discipline
 export async function createDisciplina(req, res) {
