@@ -1,6 +1,6 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
-import Disciplina from './disciplina.js';
+import Disciplina from './disciplinaModel.js';
 
 const Turma = sequelize.define('Turma', {
   id: {
@@ -26,13 +26,13 @@ const Turma = sequelize.define('Turma', {
   },
   plano_id: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: true
   },
-  docente_responsavel: {
+  docente_responsavel_id: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: true
   },
-  docente_secundario: {
+  docente_secundario_id: {
     type: DataTypes.INTEGER,
     allowNull: true
   },

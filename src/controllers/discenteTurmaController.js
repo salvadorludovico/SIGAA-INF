@@ -1,6 +1,5 @@
-import DiscenteTurma from '../models/discente_turma.js';
+import DiscenteTurma from '../models/discenteTurmaModel.js';
 
-// Create a new student class enrollment
 export async function insereDiscenteTurma(req, res) {
     const { turma_id, aluno_id, status = "CURSANDO" } = req.body;
     try {
@@ -19,7 +18,6 @@ export async function insereDiscenteTurma(req, res) {
     }
 }
 
-// Get an enrollment by id
 export async function getDiscenteTurmaById(req, res) {
     const { turma_id, aluno_id } = req.params;
     try {
@@ -46,7 +44,6 @@ export async function getDiscenteTurmaById(req, res) {
     }
 }
 
-// Get all enrollments
 export async function getAllDiscenteTurmas(req, res) {
     try {
         const discenteTurmas = await DiscenteTurma.findAll();
@@ -63,7 +60,6 @@ export async function getAllDiscenteTurmas(req, res) {
     }
 }
 
-// Update an enrollment by id
 export async function updateDiscenteTurmaStatus(req, res) {
     const { turma_id, aluno_id } = req.params;
     const { status } = req.body;
@@ -95,7 +91,6 @@ export async function updateDiscenteTurmaStatus(req, res) {
     }
 }
 
-// Delete an enrollment by id
 export async function removeDiscenteTurma(req, res) {
     const { turma_id, aluno_id } = req.params;
     try {

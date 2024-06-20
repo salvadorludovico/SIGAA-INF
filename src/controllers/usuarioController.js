@@ -1,8 +1,18 @@
 import Usuario from '../models/usuario.js';
 
-// Create a new user
 export async function createUsuario(req, res) {
-    const { nome, nascimento, email, senha, curso, docente, coordena_curso, vice_diretor, status } = req.body;
+    const { 
+        nome, 
+        nascimento, 
+        email, 
+        senha, 
+        curso, 
+        docente, 
+        coordena_curso,
+        vice_diretor,
+        status
+    } = req.body;
+    
     try {
         const newUsuario = await Usuario.create({ nome, nascimento, email, senha, curso, docente, coordena_curso, vice_diretor, status });
         res.status(201).json({
@@ -19,7 +29,6 @@ export async function createUsuario(req, res) {
     }
 }
 
-// Get a user by id
 export async function getUsuarioById(req, res) {
     const { id } = req.params;
     try {
@@ -44,7 +53,6 @@ export async function getUsuarioById(req, res) {
     }
 }
 
-// Get all users
 export async function getAllUsuarios(req, res) {
     try {
         const usuarios = await Usuario.findAll();
@@ -61,10 +69,19 @@ export async function getAllUsuarios(req, res) {
     }
 }
 
-// Update a user by id
 export async function updateUsuario(req, res) {
     const { id } = req.params;
-    const { nome, nascimento, email, senha, curso, docente, coordena_curso, vice_diretor, status } = req.body;
+    const { 
+        nome, 
+        nascimento, 
+        email, 
+        senha, 
+        curso, 
+        docente, 
+        coordena_curso, 
+        vice_diretor, 
+        status 
+    } = req.body;
     try {
         const [updated] = await Usuario.update({ nome, nascimento, email, senha, curso, docente, coordena_curso, vice_diretor, status }, {
             where: { id }
@@ -91,7 +108,6 @@ export async function updateUsuario(req, res) {
     }
 }
 
-// Delete a user by id
 export async function deleteUsuario(req, res) {
     const { id } = req.params;
     try {

@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
 import Turma from './turma.js';
-import Usuario from './usuario.js';
+import Usuario from './usuarioModel.js';
 
 const DiscenteTurma = sequelize.define('DiscenteTurma', {
   turma_id: {
