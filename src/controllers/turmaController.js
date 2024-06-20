@@ -84,11 +84,6 @@ export async function updateTurma(req, res) {
                 data: updatedTurma,
                 statusCode: 200
             });
-        } else {
-            res.status(404).json({
-                message: 'Turma não encontrada',
-                statusCode: 404
-            });
         }
     } catch (error) {
         res.status(500).json({
@@ -133,6 +128,40 @@ export async function getAllTurmas(req, res) {
     } catch (error) {
         res.status(500).json({
             message: 'Erro ao buscar turmas',
+            error: error.message,
+            statusCode: 500
+        });
+    }
+}
+
+export async function getAllTurmasByUsuario(req, res) {
+    const { usuario_id } = req.body; 
+
+    try {
+        const turmasDocente = await Turma.findAll({
+            where: {
+                [Op.or]: [
+                    { docente_responsavel: usuario_id },
+                    { docente_secundario: usuario_id }
+                ]
+            }
+        });
+
+        const turmasDiscente = await DiscenteTurma.findAll({
+            where: { aluno_id: usuario_id },
+            include: [{ model: Turma }]
+        });
+
+        const turmasDiscenteList = turmasDiscente.map(d => d.Turma);
+        const turmas = [...new Set([...turmasDocente, ...turmasDiscenteList])];
+
+        res.json({
+            data: turmas,
+            statusCode: 200
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: 'Erro ao buscar turmas do usuário',
             error: error.message,
             statusCode: 500
         });
