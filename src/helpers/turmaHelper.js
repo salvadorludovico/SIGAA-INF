@@ -2,7 +2,7 @@ import Usuario from '../models/usuarioModel.js';
 import Disciplina from '../models/disciplinaModel.js';
 
 export function isHorarioValid(horario) {
-  const regex = /^[0-9]{2}[MVN][1-6]{5}$/;
+  const regex = /^[2-7]{2}[MVN][1-6]{5}$/;
   return regex.test(horario);
 }
 
