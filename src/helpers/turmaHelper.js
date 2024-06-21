@@ -12,7 +12,7 @@ export function isChaveAcessoValid(chave_acesso) {
 }
 
 export function isSemestreValid(semestre_id) {
-  const regex = /^[1-9]{4}-[1-4]$/;
+  const regex = /^[0-9]{4}-[1-4]$/;
   return regex.test(semestre_id);
 }
 
