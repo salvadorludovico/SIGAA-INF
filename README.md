@@ -1,4 +1,4 @@
-# SIGAA-INF
+# SIGAA-INF Backend API
 
 # Setup
 1. Instalar node
